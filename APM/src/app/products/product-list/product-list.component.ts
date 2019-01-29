@@ -28,6 +28,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   selectedProduct: Product | null;
   sub: Subscription;
   componentActive = true;
+  products$: Subscription;
 
   constructor(
     private productService: ProductService,
@@ -35,7 +36,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.store
+    this.products$ = this.store
       .pipe(select(fromProduct.getCurrentProduct))
       .subscribe(currentProduct => (this.selectedProduct = currentProduct));
 

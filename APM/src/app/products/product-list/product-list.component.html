@@ -4,10 +4,11 @@
     {{pageTitle}}
   </div>
 
-  <div class="card-body" *ngIf="products?.length">
+  <div class="card-body">
+  <!-- *ngIf="products?.length" -->
     <div class="list-group">
       <button class="list-group-item list-group-item-action rounded-0"
-          *ngFor="let product of products"
+          *ngFor="let product of products$ | async"
           [ngClass]="{'active': product?.id === selectedProduct?.id}"
           (click)="productSelected(product)">{{ product.productName }}
         <ng-container *ngIf="displayCode">
