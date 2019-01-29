@@ -56,7 +56,7 @@ export function reducer(
         ...state,
         currentProduct: null
       };
-      case ProductActionTypes.InitializeCurrentProduct:
+    case ProductActionTypes.InitializeCurrentProduct:
       return {
         ...state,
         currentProduct: {
@@ -66,6 +66,11 @@ export function reducer(
           description: '',
           starRating: 0
         }
+      };
+    case ProductActionTypes.LoadSuccess:
+      return {
+        ...state,
+        products: action.payload
       };
     default:
       return state;
